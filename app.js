@@ -1,32 +1,37 @@
-const ui=new UI();
-
-
+// init storage
+const storage= new Storage();
+// get stored location data
+const weatherLocation=storage.getLocationData();
 
 // init weather object
+const weather= new Weather('Bengaluru','IN');
 
-const climate=new Climate('Bengaluru','IN');
-// get climate on dom load
+// init Ui
+const ui=new UI();
+
+// get weather on dom load
 document.addEventListener('DOMContentLoaded',getWeather);
 
 // change location event
-document.getElementById('w-change-btn').addEventListener('click',(e)=>{
+document.getElementById('w-change-btn').addEventListener('click',()=>{
     const city=document.getElementById('city').value;
     const country=document.getElementById('country').value;
 
-    climate.changeLocation('Miami','FL');
+    weather.changeLocation(city,country);
 
-    // get and display climate 
+    // get and display weather
     getWeather();
 
     // close modal
-    $('#locModla').modal('hide');
+    $('#locModal').modal('hide');
 });
 
+
 function getWeather(){
-climate.getWeather()
+weather.getWeather()
 .then(results=>{
-   console.log(results);
-   ui.paint(results);
+    console.log(results);
+    ui.paint(results);
 })
-.catch(err=>{console.log(err)})
+.catch(err=>console.log(err))
 }

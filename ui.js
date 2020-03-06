@@ -11,19 +11,19 @@ class UI{
         this.wind=document.getElementById('w-wind');
         
     }
-    paint(climate){
+    paint(weather){
         
-        this.location.textContent=`${climate.name},${climate.sys.country}`;
-        this.desc.textContent = climate.weather[0].main;
-        this.visisbility.textContent=`Pressure:${climate.main.pressure}`;
+        this.location.textContent=`${weather.name},${weather.sys.country}`;
+        this.desc.textContent = weather.weather[0].main;
+        this.visisbility.textContent=`Pressure:${weather.main.pressure}`;
         this.icon.setAttribute(
             'src',
-            `http://openweathermap.org/img/wn/${climate.weather[0].icon}@2x.png`
+            `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`
         );
-        this.string.textContent = `Temp:${climate.main.temp} in Kelvin`;
-        this.wind.textContent = `Windspeed:${climate.wind.speed}, Deg:${climate.wind.deg}`;
-        this.humidity.textContent=`Humidity:${climate.main.humidity}`;
-        this.feelsLike.textContent=`Feels-like:${climate.main.feels_like}`;
+        this.string.textContent = `Temp:${weather.main.temp} in Kelvin`;
+        this.wind.textContent = `Windspeed:${weather.wind.speed}, Deg:${weather.wind.deg}`;
+        this.humidity.textContent=`Humidity:${weather.main.humidity}`;
+        this.feelsLike.textContent=`Feels-like:${weather.main.feels_like}`;
 
     }
 }
