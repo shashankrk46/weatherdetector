@@ -20,7 +20,7 @@ class UI{
             'src',
             `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`
         );
-        this.string.textContent = `Temp:${weather.main.temp} in Kelvin`;
+        this.string.textContent = `Temp:${Math.trunc(weather.main.temp-273)} in celsius`;
         this.wind.textContent = `Windspeed:${weather.wind.speed}, Deg:${weather.wind.deg}`;
         this.humidity.textContent=`Humidity:${weather.main.humidity}%`;
         this.feelsLike.textContent=`Feels-like:${weather.main.feels_like}`;
