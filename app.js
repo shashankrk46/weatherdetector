@@ -4,7 +4,7 @@ const storage= new Storage();
 const weatherLocation=storage.getLocationData();
 
 // init weather object
-const weather= new Weather('Bengaluru','IN');
+const weather= new Weather(weatherLocation.city,weatherLocation.country);
 
 // init Ui
 const ui=new UI();
@@ -16,8 +16,12 @@ document.addEventListener('DOMContentLoaded',getWeather);
 document.getElementById('w-change-btn').addEventListener('click',()=>{
     const city=document.getElementById('city').value;
     const country=document.getElementById('country').value;
-
+    
+    // change location
     weather.changeLocation(city,country);
+
+    // change location in ls
+    storage.setLocationData(city,country);
 
     // get and display weather
     getWeather();
